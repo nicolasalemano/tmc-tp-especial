@@ -44,7 +44,7 @@ function [probabilidad, todas_las_probabilidades]=calcular_probabilidad_fallos_s
   toc%muestra el tiempo que tarda en ejecutar
     probabilidad = probabilidad_actual;
 
-fprintf('%d\n', contador);
+fprintf('contador: %d\n', contador);
  
  
  
