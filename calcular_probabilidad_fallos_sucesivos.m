@@ -5,22 +5,26 @@
 function [probabilidad, todas_las_probabilidades]=calcular_probabilidad_fallos_sucesivos(epsilon,DNI)
 
  todas_las_probabilidades = [];
+
   probabilidad_anterior = 0; 
   probabilidad_actual = 1;  
   casos_favorables = 0;
   contador=0;
-  valorDNI_ante=0
-  
-  
+  valorDNI_ante=0;
  tic
-  while ~converge(probabilidad_anterior, probabilidad_actual, epsilon, contador)          
-        probabilidad_anterior = probabilidad_actual;        
-        valorDNI=my_mex_service(DNI);               
+  while ~converge(probabilidad_anterior, probabilidad_actual, epsilon, contador)
+          
+        probabilidad_anterior = probabilidad_actual;
+        
+        valorDNI=my_mex_service(DNI);
+               
         contador=contador+1;        
 
         if((valorDNI_ante==0)&&(valorDNI==0))
             casos_favorables = casos_favorables + 1;
-        end   
+         end
+                  
+
                     
          probabilidad_actual = casos_favorables / contador;
            
@@ -40,7 +44,7 @@ function [probabilidad, todas_las_probabilidades]=calcular_probabilidad_fallos_s
   toc%muestra el tiempo que tarda en ejecutar
     probabilidad = probabilidad_actual;
 
-fprintf('contador%d\n', contador);
+fprintf('VECES RECORRIDO %d\n', contador);
  
  
  
